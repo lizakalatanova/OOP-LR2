@@ -1,0 +1,56 @@
+import java.util.Scanner;
+public class Lab1 {
+    public static double computeArea(Point3d obj1, Point3d obj2, Point3d obj3) {
+        double a=obj2.distanceTo(obj1);
+        double b=obj3.distanceTo(obj2);
+        double c=obj1.distanceTo(obj3);
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        double p=(a+b+c)/2;
+        double S=Math.round((Math.sqrt(p*(p-a)*(p-b)*(p-c)))*100.00)/100.00;
+        return S;
+    }
+    public static boolean eq(Point3d obj1, Point3d obj2){
+        if (obj1.getX()== obj2.getX() && obj1.getY()== obj2.getY() && obj1.getZ()==obj2.getZ())
+            return true;
+        else
+            return false;
+    }
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        System.out.println("X1:" );
+        double x1=s.nextDouble();
+        System.out.println("Y1:" );
+        double y1=s.nextDouble();
+        System.out.println("Z1:" );
+        double z1=s.nextDouble();
+
+        System.out.println("X2:" );
+        double x2=s.nextDouble();
+        System.out.println("Y2:" );
+        double y2=s.nextDouble();
+        System.out.println("Z2:" );
+        double z2=s.nextDouble();
+
+        System.out.println("X3:" );
+        double x3=s.nextDouble();
+        System.out.println("Y3:" );
+        double y3=s.nextDouble();
+        System.out.println("Z3:" );
+        double z3=s.nextDouble();
+
+        Point3d Point1=new Point3d(x1,y1,z1);
+        Point3d Point2=new Point3d(x2,y2,z2);
+        Point3d Point3=new Point3d(x3,y3,z3);
+
+        System.out.println(Point1.getX()+" "+ Point1.getY()+ " "+Point1.getZ());
+        System.out.println(Point2.getX()+" "+ Point2.getY()+ " "+Point2.getZ());
+        System.out.println(Point3.getX()+" "+ Point3.getY()+ " "+Point3.getZ());
+
+        if((Point1.equals(Point2))||(Point2.equals(Point3))||(Point3.equals(Point1)))
+            System.out.println("Найдены равные координаты");
+       else if (!Point1.equals(Point2)&&!Point2.equals(Point3)&&!Point3.equals(Point1))
+           System.out.println("Площадь треугольника: "+computeArea(Point1, Point2, Point3));
+    }
+}
